@@ -39,9 +39,9 @@ def on_mqtt_connect(self, client, userdata, flags, rc=None):
 
 mqtt_client = mqtt.Client(transport="websockets")
 mqtt_client.username_pw_set(MQTT_USER, password=MQTT_PASS)
-if MQTT_TLS is True:
-    mqtt_client.tls_set(cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)
-    mqtt_client.tls_insecure_set(not MQTT_TLS)
+# if MQTT_TLS is True:
+#     mqtt_client.tls_set(cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)
+#     mqtt_client.tls_insecure_set(not MQTT_TLS)
 mqtt_client.on_connect = on_mqtt_connect
 print(devices)
 print(mqtt_client.__dict__)
