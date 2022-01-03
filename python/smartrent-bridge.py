@@ -36,7 +36,16 @@ ws_message = ''
 
 #def on_mqtt_connect(self, client, userdata, flags, rc):
 def on_mqtt_connect(client, userdata, flags, rc):
-    print("Connected to MQTT broker with result code " + str(rc))
+    if rc==0:
+        print("connected OK Returned code=",rc)
+    else:
+        print("Bad connection Returned code=",rc)
+        # 0: Connection successful
+        # 1: Connection refused – incorrect protocol version
+        # 2: Connection refused – invalid client identifier
+        # 3: Connection refused – server unavailable
+        # 4: Connection refused – bad username or password
+        # 5: Connection refused – not authorised
 
 mqtt_client = mqtt.Client(transport="websockets")
 mqtt_client.username_pw_set(MQTT_USER, password=MQTT_PASS)
