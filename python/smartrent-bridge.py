@@ -34,7 +34,8 @@ devices = json.loads(os.environ.get('DEVICES'))
 topics = {}
 ws_message = ''
 
-def on_mqtt_connect(self, client, userdata, flags, rc):
+#def on_mqtt_connect(self, client, userdata, flags, rc):
+def on_mqtt_connect(self, client, userdata, flags, rc=None):
     print("Connected to MQTT broker with result code " + str(rc))
 
 mqtt_client = mqtt.Client(transport="websockets")
@@ -129,7 +130,7 @@ class SmartRentBridge:
         if msg_type == "attribute_state":
             attribute = msg_data['name']
             # device_id = str(msg_data['device_id'])
-            device_id = str(message_json[2].split(":")[1])
+            device_id = int(message_json[2].split(":")[1])
             value = msg_data['last_read_state']
             # Thermostat Setpoint
             if attribute in ["heating_setpoint", "cooling_setpoint"]:
