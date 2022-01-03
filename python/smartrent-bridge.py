@@ -35,8 +35,8 @@ topics = {}
 ws_message = ''
 
 #def on_mqtt_connect(self, client, userdata, flags, rc):
-def on_mqtt_connect(self, client, userdata, flags, rc=None):
-    print("Connected to MQTT broker with result code " + str(self) + str(client) + str(userdata) + str(flags) + str(rc))
+def on_mqtt_connect(client, userdata, flags, rc):
+    print("Connected to MQTT broker with result code " + str(rc))
 
 mqtt_client = mqtt.Client(transport="websockets")
 mqtt_client.username_pw_set(MQTT_USER, password=MQTT_PASS)
